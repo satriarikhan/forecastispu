@@ -1,0 +1,49 @@
+{
+  "info": {
+    "_postman_id": "forecast-ispu-predict-only",
+    "name": "API Model Training Forecast ISPU",
+    "description": "API khusus untuk mengeksekusi model training: pl.predict_forecast(feat, ORIGIN, models, metadata)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8001",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET /predict (Model Training Forecast)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/predict?origin=2026-09-21 08:00:00",
+          "host": ["{{base_url}}"],
+          "path": ["predict"],
+          "query": [
+            {
+              "key": "origin",
+              "value": "2026-09-21 08:00:00",
+              "description": "Waktu origin (opsional, jika kosong memakai grid terbaru)"
+            },
+            {
+              "key": "sensor",
+              "value": "PH10P0001",
+              "disabled": true,
+              "description": "Filter sensor tertentu (opsional)"
+            },
+            {
+              "key": "pollutant",
+              "value": "PM25",
+              "disabled": true,
+              "description": "Filter polutan tertentu (opsional)"
+            }
+          ]
+        },
+        "description": "Menjalankan baris: forecast, skipped = pl.predict_forecast(feat, ORIGIN, models, metadata)"
+      }
+    }
+  ]
+}
